@@ -78,7 +78,10 @@ async function getSongs(folder) {
 
 const playMusic = (track, pause = false) => {
   console.log("entered");
-  currentSong.src = `${basePath}/${currSongFolder}/` + track;
+  console.log(basePath);
+  console.log(basePath/currSongFolder);
+  console.log(`${basePath}/${currSongFolder}/${track}`);
+  currentSong.src = `${basePath}/${currSongFolder}/${track}` ;
   if (!pause) {
     currentSong.play();
     play.src = "SVG/pause.svg";
