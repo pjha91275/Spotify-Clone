@@ -25,7 +25,7 @@ async function createSongListItem(song, currSongFolder) {
           li.innerHTML = `<img class ="thumbnail" src = "${basePath}/${currThumbnailFolder}/${song
             .replace(".mp3", "")}.jpeg" alt = "">
                 <div class="info">
-                  <div class = "song">${song.replace(".mp3", "")}</div>
+                  <div class = "song">${song.replace(".mp3", "").replaceAll("_", " ")}</div>
                   <div class = "artist">${currSongFolder
                     .replace("songs/", "")
                     .replaceAll("_", " ")}</div>
@@ -79,7 +79,7 @@ const playMusic = (track, pause = false) => {
   document.querySelector(".songName").innerHTML = decodeURI(track).replace(
     ".mp3",
     ""
-  );
+  ).replaceAll("_", " ");
   document.querySelector(".songTime").innerHTML = "0:0/0:0";
 };
 
