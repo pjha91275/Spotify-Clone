@@ -66,6 +66,7 @@ async function getSongs(folder) {
   songUL.innerHTML = "";
   for (let song of songs) {
     song = song.replaceAll("%20"," ");
+    console.log(song);
     const li = await createSongListItem(song, currSongFolder);
     songUL.appendChild(li);
   }
