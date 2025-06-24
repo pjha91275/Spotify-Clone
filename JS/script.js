@@ -20,7 +20,6 @@ async function createSongListItem(song, currSongFolder) {
         let audio = new Audio(
           `/${currSongFolder}/${song.replaceAll("%20", " ")}`
         );
-        currThumbnailFolder = currSongFolder.replace("songs", "songsThumbnail");
         audio.addEventListener("loadedmetadata", () => {
           let li = document.createElement("li");
           li.innerHTML = `<img class ="thumbnail" src = "${currThumbnailFolder}/${song
@@ -49,17 +48,18 @@ async function createSongListItem(song, currSongFolder) {
         });
       });
     }
-    
+
 async function getSongs(folder) {
   currSongFolder = folder;
   currThumbnailFolder = folder.replace("songs", "songsThumbnail");
   let res = await fetch(`${basePath}/${folder}/info.json`);
   let data = await res.json();
   songs = data.songs;
+  console.log(songs);
   let songUL = document.querySelector(".songList ul");
   songUL.innerHTML = "";
   for (const song of songs) {
-    const li = await createSongListItem(song, folder);
+    const li = await createSongListItem(song, currSongFolder);
     songUL.appendChild(li);
   }
   return songs;
