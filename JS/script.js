@@ -21,7 +21,7 @@ async function createSongListItem(song, currSongFolder) {
         song = song.replaceAll("%20", " ")
         console.log(song);
         let audio = new Audio(
-          `/${currSongFolder}/${song.replaceAll("%20", " ")}`
+          `${basePath}/${currSongFolder}/${song.replaceAll("%20", " ")}`
         );
         audio.addEventListener("loadedmetadata", () => {
           console.log("entered");
