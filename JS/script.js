@@ -17,12 +17,12 @@ function formatSecondsToMinutes(seconds) {
 
 async function createSongListItem(song, currSongFolder) {
       return new Promise((resolve) => {
-        console.log(entered);
+        console.log("entered");
         let audio = new Audio(
           `/${currSongFolder}/${song.replaceAll("%20", " ")}`
         );
         audio.addEventListener("loadedmetadata", () => {
-          console.log(entered);
+          console.log("entered");
           let li = document.createElement("li");
           li.innerHTML = `<img class ="thumbnail" src = "${currThumbnailFolder}/${song
             .replaceAll("%20", " ")
@@ -42,7 +42,7 @@ async function createSongListItem(song, currSongFolder) {
 
           //Attach an event listener to each song
           li.addEventListener("click", (element) => {
-            console.log(entered);
+            console.log("entered");
             const songName = li.querySelector(".info .song").innerText;
             playMusic(songName + ".mp3");
           });
@@ -74,7 +74,7 @@ async function getSongs(folder) {
 }
 
 const playMusic = (track, pause = false) => {
-  console.log(entered);
+  console.log("entered");
   currentSong.src = `/${currSongFolder}/` + track;
   if (!pause) {
     currentSong.play();
