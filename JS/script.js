@@ -51,9 +51,12 @@ async function createSongListItem(song, currSongFolder) {
 
 async function getSongs(folder) {
   currSongFolder = folder;
+  console.log(currSongFolder );
   currThumbnailFolder = folder.replace("songs", "songsThumbnail");
   let res = await fetch(`${basePath}/${folder}/info.json`);
+  console.log(res);
   let data = await res.json();
+  console.log( data);
   songs = data.songs;
   console.log(songs);
   let songUL = document.querySelector(".songList ul");
