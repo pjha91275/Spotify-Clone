@@ -17,69 +17,16 @@ function formatSecondsToMinutes(seconds) {
 
 async function getSongs(folder) {
   currSongFolder = folder;
-  let a = await fetch(`${basePath}/${folder}/`);
-  let response = await a.text();
-  let div = document.createElement("div");
-  div.innerHTML = response;
-  let as = div.getElementsByTagName("a");
-  songs = [];
-  for (let index = 0; index < as.length; index++) {
-    let element = as[index];
-    if (element.href.endsWith(".mp3.preview")) {
-      songs.push(
-        element.href
-          .split(`/${folder}/`)[1]
-          .replace(".preview", "")
-          .replaceAll("%20", " ")
-      );
-    }
-  }
-
-  // show all the songs in the playlist
-  let songUL = document
-    .querySelector(".songList")
-    .getElementsByTagName("ul")[0];
+  currThumbnailFolder = folder.replace("songs", "songsThumbnail");
+  let res = await fetch(`${basePath}/${folder}/info.json`);
+  let data = await res.json();
+  songs = data.songs;
+  let songUL = document.querySelector(".songList ul");
   songUL.innerHTML = "";
   for (const song of songs) {
-    async function createSongListItem(song, currSongFolder) {
-      return new Promise((resolve) => {
-        let audio = new Audio(
-          `/${currSongFolder}/${song.replaceAll("%20", " ")}`
-        );
-        currThumbnailFolder = currSongFolder.replace("songs", "songsThumbnail");
-        audio.addEventListener("loadedmetadata", () => {
-          let li = document.createElement("li");
-          li.innerHTML = `<img class ="thumbnail" src = "${currThumbnailFolder}/${song
-            .replaceAll("%20", " ")
-            .replace(".mp3", "")}.jpeg" alt = "">
-                <div class="info">
-                  <div class = "song">${song.replace(".mp3", "")}</div>
-                  <div class = "artist">${currSongFolder
-                    .replace("songs/", "")
-                    .replaceAll("_", " ")}</div>
-                </div>
-                <div class="durationPlay">
-                  <div class="duration">${formatSecondsToMinutes(
-                    Math.floor(audio.duration || 0)
-                  )}</div>
-                  <img class = "invert play-Library" src = "SVG/play.svg" alt = "">
-                </div>`;
-
-          //Attach an event listener to each song
-          li.addEventListener("click", (element) => {
-            const songName = li.querySelector(".info .song").innerText;
-            playMusic(songName + ".mp3");
-          });
-
-          resolve(li);
-        });
-      });
-    }
-
-    const li = await createSongListItem(song, currSongFolder);
+    const li = await createSongListItem(song, folder);
     songUL.appendChild(li);
   }
-
   return songs;
 }
 
