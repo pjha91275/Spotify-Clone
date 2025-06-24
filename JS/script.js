@@ -18,6 +18,8 @@ function formatSecondsToMinutes(seconds) {
 async function createSongListItem(song, currSongFolder) {
       return new Promise((resolve) => {
         console.log("entered");
+        song = song.replaceAll("%20", " ")
+        console.log(song);
         let audio = new Audio(
           `/${currSongFolder}/${song.replaceAll("%20", " ")}`
         );
