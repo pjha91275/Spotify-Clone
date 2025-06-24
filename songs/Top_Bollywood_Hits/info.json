@@ -1,4 +1,5 @@
 {
     "title":"Top Bollywood Hits",
-    "description":"Mika Singh, Sonu Nigam, Jubin Nautiyal, ..."
+    "description":"Mika Singh, Sonu Nigam, Jubin Nautiyal, ...",
+     "songs": ["Bombay To Punjab.mp3", "Chale Aana.mp3", "DARD DILO KE.mp3", "Dekhte Dekhte.mp3","Kyaa Baat Haii 2.0.mp3", "Lut Gaye.mp3", "Mere Rashke Qamar.mp3", "Mujhko Yaad Sataye Teri.mp3", "Pungi.mp3", "Tumse Milke Dil ka.mp3"]
 }
