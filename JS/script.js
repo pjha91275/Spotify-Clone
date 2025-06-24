@@ -58,10 +58,12 @@ async function getSongs(folder) {
   console.log(songs);
   let songUL = document.querySelector(".songList ul");
   songUL.innerHTML = "";
-  for (const song of songs) {
+  for (let song of songs) {
+    song = song.replaceAll("%20"," ");
     const li = await createSongListItem(song, currSongFolder);
     songUL.appendChild(li);
   }
+  console.log(songs);
   return songs;
 }
 
