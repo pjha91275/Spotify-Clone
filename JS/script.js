@@ -26,7 +26,7 @@ async function createSongListItem(song, currSongFolder) {
         audio.addEventListener("loadedmetadata", () => {
           console.log("entered");
           let li = document.createElement("li");
-          li.innerHTML = `<img class ="thumbnail" src = "${currThumbnailFolder}/${song
+          li.innerHTML = `<img class ="thumbnail" src = "${basePath}/${currThumbnailFolder}/${song
             .replaceAll("%20", " ")
             .replace(".mp3", "")}.jpeg" alt = "">
                 <div class="info">
@@ -78,7 +78,7 @@ async function getSongs(folder) {
 
 const playMusic = (track, pause = false) => {
   console.log("entered");
-  currentSong.src = `/${currSongFolder}/` + track;
+  currentSong.src = `${basePath}/${currSongFolder}/` + track;
   if (!pause) {
     currentSong.play();
     play.src = "SVG/pause.svg";
@@ -86,7 +86,7 @@ const playMusic = (track, pause = false) => {
 
   document.querySelector(
     ".songThumbnail"
-  ).innerHTML = `<img src = "${currThumbnailFolder}/${track.replace(
+  ).innerHTML = `<img src = "${basePath}/${currThumbnailFolder}/${track.replace(
     ".mp3",
     ""
   )}.jpeg" alt = ""></img>`;
