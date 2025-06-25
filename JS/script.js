@@ -27,8 +27,8 @@ async function createSongListItem(song, currSongFolder) {
                 <div class="info">
                   <div class = "song">${song.replace(".mp3", "").replaceAll("_", " ")}</div>
                   <div class = "artist">${currSongFolder
-                    .replace("songs/", "")
-                    .replaceAll("_", " ")}</div>
+                    .replace("songs/", "").replaceAll("_", " ")
+                    }</div>
                 </div>
                 <div class="durationPlay">
                   <div class="duration">${formatSecondsToMinutes(
@@ -39,7 +39,7 @@ async function createSongListItem(song, currSongFolder) {
 
           //Attach an event listener to each song
           li.addEventListener("click", (element) => {
-            const songName = li.querySelector(".info .song").innerText;
+            const songName = li.querySelector(".info .song").innerText.replaceAll(" ", "_");
             playMusic(songName + ".mp3");
           });
 

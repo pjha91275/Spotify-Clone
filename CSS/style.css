@@ -910,3 +910,7 @@ body {
    }
 
 }
+
+.home:focus,.home:focus-visible{
+  outline :none;
+}
