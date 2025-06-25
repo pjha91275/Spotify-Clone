@@ -82,7 +82,7 @@ body {
 .searchbar .line {
   height : 50%;
   position: absolute;
-  bottom: 7px;
+  bottom: 12px;
   right: 50px;
 }
 
@@ -313,6 +313,7 @@ body {
   flex-wrap: wrap;
   margin: 25px;
   max-height: 65.5vh;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 
@@ -704,7 +705,7 @@ body {
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 670px) {
 
   .header > * {
     padding: 2px;
@@ -852,4 +853,56 @@ body {
     width: 20vw;
     height: 10vh;
    }
+}
+
+@media (max-height: 850px){
+
+  .header{
+    gap : 10px;
+  }
+
+  .hamburgerContainer img{
+     width : 35px;
+  } 
+
+  .searchbar {
+    width :70vw;
+  }
+
+  .searchbar input{
+    width : 48.5vw;
+  }
+
+   .searchbar .line {
+     bottom : 9px;
+   }
+
+  .playbar{
+    bottom : 1vh;
+    right : 0.81vw;
+    padding : 6px 6px 3px 6px;
+  }
+
+  .abovebar{
+    gap : 8px;
+    margin-bottom: 3px;;
+   }
+
+    .songThumbnail , .songThumbnail img {
+    width: 12vw;
+    height: 6.5vh;
+   }
+
+   .songThumbnail {
+      margin-bottom : 5px;
+   }
+
+   .timevol{
+    gap : 0px;
+   }
+
+   .volume img {
+    padding-bottom: 7px;
+   }
+
 }
