@@ -37,7 +37,7 @@ A frontend clone of Spotify’s web player, built using HTML, CSS, and JavaScrip
 
 > ⚠️ **Important:** When you open the live site link, your browser may show a security warning (red background) saying the site is dangerous or deceptive.
 
-This is a **false warning** caused because the project is hosted on **GitHub Pages** and looks visually similar to real websites like Amazon or Spotify.
+This is a **false warning** caused because the project is hosted on **GitHub Pages** and looks visually similar to real websites of Spotify.
 
 To proceed and view the site:
 
